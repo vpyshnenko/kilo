@@ -1,7 +1,6 @@
 #!/usr/local/bin/guile
 !#
-(use-modules (ncurses curses)
-             (ice-9 format))
+(use-modules (ncurses curses))
 
 (define stdscr (initscr))
 (nocbreak!)
