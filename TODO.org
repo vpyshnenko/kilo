@@ -1,0 +1,4 @@
+* Look at gano editor http://gano.sourceforge.net/
+* Look at liquid editor https://github.com/mogenslund/liquid
+* Look at zile https://www.gnu.org/software/zile/
+* Zile on guile https://github.com/spk121/zile
