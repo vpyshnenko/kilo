@@ -8,20 +8,19 @@
 (noecho!)
 (keypad! stdscr #t)
 
-(define cur-col 0)
+
+(let ((content '("Hello world" "My second line content" "My third line content")))
+  (for-each (lambda (line)
+	      (addstr stdscr (format #f "~a ~%" line))) content))
 
 (define (addch-at-row row ch)
   (addch stdscr
 	 (normal ch)
           #:y row
-          #:x cur-col))
-(do ((i 0 (1+ i))
-     (last-row (1- (lines))))
-    ((> i last-row))
-  (addch-at-row i #\~))
+          #:x 0))
 
 ;; draw column of tildes
-(let loop ((row 0))
+(let loop ((row (getcury stdscr)))
   (if (addch-at-row row #\~)
       (loop (1+ row))))
 
@@ -65,4 +64,6 @@
 	;; If 'Q' or 'q'  is pressed, quit.  Otherwise, loop.
 	((not (or (eqv? c #\Q) (eqv? c #\q)))
 	  (loop cy cx)))))
+
+(refresh stdscr)
 (endwin)
